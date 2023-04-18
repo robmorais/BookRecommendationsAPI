@@ -1,0 +1,12 @@
+body {
+  background-color: #f8f9fa;
+  font-family: 'Roboto', sans-serif;
+}
+
+#site-title {
+  font-weight: 700;
+}
+
+.mainbody {
+  margin-top: 20px;
+}

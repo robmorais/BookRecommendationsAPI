@@ -3,15 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Recommendation Site</title>
+    <title>Book Guru</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Book Recommendation Site</h1>
-    <input type="text" id="search" placeholder="Search for books...">
-    <button onclick="searchBooks()">Search</button>
-
-    <ul id="book-list"></ul>
+    <header class="bg-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="my-3" id="site-title">Book Guru</h2>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container mainbody">
+        <div class="row">
+            <div class="col-md-6">
+                <form id="question-form" onsubmit="submitForm(event)">
+                    <div class="form-group">
+                        <label for="book-type">Do you prefer fiction or non-fiction books?</label>
+                        <select id="book-type" class="form-control" required>
+                            <option value="">Select an option</option>
+                            <option value="fiction">Fiction</option>
+                            <option value="non-fiction">Non-fiction</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="genre">What genre(s) do you enjoy reading within that category?</label>
+                        <input type="text" id="genre" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="examples">Can you give me some examples of books you've enjoyed in the past, so I can suggest similar ones?</label>
+                        <textarea id="examples" class="form-control" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        Get Recommendations
+                        <span id="loading-spinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display: none;"></span>
+                    </button>
+                    
+                </form>
+            </div>
+            <div class="col-md-6">
+                <h3 class="mb-4">Your recommendations:</h3>
+                <div id="recommendations">Fill your preferences for 5 amazing recommendations.</div>
+            </div>
+        </div>
+    </div>
 
     <script src="main.js"></script>
 </body>
