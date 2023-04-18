@@ -6,26 +6,30 @@
     <title>Book Guru</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header class="bg-white">
         <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <h2 class="my-3" id="site-title">Book Guru</h2>
-                </div>
+          <div class="row align-items-center">
+            <div class="col-1 all-left">
+              <img src="public/logo.png" alt="Logo" class="img-fluid logo">
             </div>
+            <div class="col-11 all-left">
+              <h2 class="my-3" id="site-title">Book Guru</h2>
+            </div>
+          </div>
         </div>
-    </header>
+      </header>
     <div class="container mainbody">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 right-padding">
+                <h3 class="mb-4">Preferences</h3>
                 <form id="question-form" onsubmit="submitForm(event)">
                     <div class="form-group">
                         <label for="book-type">Do you prefer fiction or non-fiction books?</label>
                         <select id="book-type" class="form-control" required>
-                            <option value="">Select an option</option>
                             <option value="fiction">Fiction</option>
                             <option value="non-fiction">Non-fiction</option>
                         </select>
@@ -46,8 +50,8 @@
                 </form>
             </div>
             <div class="col-md-6">
-                <h3 class="mb-4">Your recommendations:</h3>
-                <div id="recommendations">Fill your preferences for 5 amazing recommendations.</div>
+                <h3 class="mb-4">Your recommendations</h3>
+                <div id="recommendations">Fill your preferences for 6 amazing recommendations.</div>
             </div>
         </div>
     </div>

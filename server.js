@@ -1,5 +1,7 @@
 require('dotenv').config();
 
+const MOCK = true;
+
 const express = require('express');
 const db = require('./db');
 
@@ -28,34 +30,36 @@ app.post('/get-recommendations', async (req, res) => {
         <Num>. <Book Name>|<GoodReads ID>|<Amazon ASIN>\n
         Example:
         1.Ender's Game|375802|0812550706\n`;
-        console.log("1");
-        const response = await openai.createChatCompletion({
-            model: "gpt-3.5-turbo",
-            messages: [{role: "user", content: prompt}],
-            });
-        //   console.log(completion.data.choices[0].message);
-          
+        
         // const response = await openai.createCompletion({
         //     model: "gpt-3.5-turbo",
         //     prompt: prompt,
         //     max_tokens: 150,
         //     temperature: 0.7,
-        //     // top_p: 1,
-        //     // n: 1,
-        //     // //stream: false,
-        //     //logprobs: null,
-        //     // stop: "\n",
         //   });
-        console.log("2");
-        
 
-        // console.log("results:");
-        // console.log(response.data);
-        // console.log("--- end of results");
-        console.log(response.data.choices[0].message.content);
-        const recommendations = parseRecommendations(response.data.choices[0].message.content);
-        console.log("4");
-        res.json(recommendations);
+        if (!MOCK) {
+            console.log("1");
+            const response = await openai.createChatCompletion({
+                model: "gpt-3.5-turbo",
+                messages: [{role: "user", content: prompt}],
+            });
+            console.log("2");
+            console.log(response.data.choices[0].message.content);
+            const recommendations = parseRecommendations(response.data.choices[0].message.content);
+            console.log("4");
+            res.json(recommendations);
+        } else {
+            const response = '1. The Hitchhikers Guide to the Galaxy by Douglas Adams |11|0345391802\n' +
+            '2. The Martian by Andy Weir |858492|0553418025\n' +
+            '3. Neuromancer by William Gibson |22328|0441569595\n' +
+            '4. Snow Crash by Neal Stephenson |830|0553380958\n' +
+            '5. Red Rising by Pierce Brown |15839976|0345539788\n' +
+            '6. Leviathan Wakes by James S.A. Corey |8855321|1841499889'
+            const recommendations = parseRecommendations(response);
+            res.json(recommendations);
+        }
+        
     } catch (err) {
         console.log("err:");
         console.error(err);
